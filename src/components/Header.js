@@ -29,7 +29,7 @@ const Header = props => (
         <li>
           <button
             onClick={() => {
-              props.onOpenArticle('schedule')
+              props.onOpenArticle('events')
             }}
           >
             Events

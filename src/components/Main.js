@@ -37,7 +37,7 @@ class Main extends React.Component {
             aliquam facilisis ante interdum congue. Integer mollis, nisl amet
             convallis, porttitor magna ullamcorper, amet egestas mauris. Ut
             magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas.
-            By the way, check out my <a href="#work">awesome work</a>.
+            By the way, check out our <a onClick={() => {this.props.onNewArticle('events')}} href="#events">tour schedule</a>.
           </p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
@@ -56,8 +56,8 @@ class Main extends React.Component {
         </article>
 
         <article
-          id="schedule"
-          className={`${this.props.article === 'schedule' ? 'active' : ''} ${
+          id="events"
+          className={`${this.props.article === 'events' ? 'active' : ''} ${
             this.props.articleTimeout ? 'timeout' : ''
           }`}
           style={{ display: 'none' }}
@@ -169,6 +169,7 @@ Main.propTypes = {
   article: PropTypes.string,
   articleTimeout: PropTypes.bool,
   onCloseArticle: PropTypes.func,
+  onNewArticle: PropTypes.func,
   timeout: PropTypes.bool,
   setWrapperRef: PropTypes.func.isRequired,
 }
