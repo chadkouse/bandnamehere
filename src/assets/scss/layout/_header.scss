@@ -114,6 +114,7 @@
     ul {
       @include vendor('display', 'flex');
       margin-bottom: 0;
+      margin-left: -1px;
       list-style: none;
       padding-left: 0;
       border: solid _size(border-width) _palette(border);
@@ -128,7 +129,6 @@
         }
 
         button {
-          display: block;
           min-width: 7.5rem;
           height: 2.75rem;
           line-height: 2.75rem;

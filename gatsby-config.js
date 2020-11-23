@@ -1,8 +1,9 @@
 module.exports = {
+  pathPrefix: '/band',
   siteMetadata: {
-    title: 'Gatsby Starter - Dimension V2',
-    author: 'Hunter Chang',
-    description: 'A Gatsby.js V2 Starter based on Dimension by HTML5 UP',
+    title: 'Band Name Here',
+    author: 'Chad Kouse',
+    description: 'The Area\'s best party band! Come party with we who party for a living!',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -19,5 +20,12 @@ module.exports = {
       },
     },
     'gatsby-plugin-sass',
+    {
+        resolve: `gatsby-plugin-s3`,
+        options: {
+            bucketName: 'chadkouse.xyz',
+            bucketPrefix: 'band'
+        },
+    },
   ],
 }
