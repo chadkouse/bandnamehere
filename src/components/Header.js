@@ -8,7 +8,7 @@ const Header = props => (
     </div>
     <div className="content">
       <div className="inner">
-        <h1>Band Name Here</h1>
+        <h1>{ props.bandName }</h1>
         <p>
           <div>The area&apos;s best party band!</div>
           <div>Come party with we who party for a living!</div>
@@ -18,40 +18,24 @@ const Header = props => (
     <nav>
       <ul>
         <li>
-          <button
-            onClick={() => {
-              props.onOpenArticle('intro')
-            }}
-          >
+          <a href='#intro'>
             Intro
-          </button>
+          </a>
         </li>
         <li>
-          <button
-            onClick={() => {
-              props.onOpenArticle('events')
-            }}
-          >
+          <a href='#events'>
             Events
-          </button>
+          </a>
         </li>
         <li>
-          <button
-            onClick={() => {
-              props.onOpenArticle('about')
-            }}
-          >
+          <a href='#about'>
             About
-          </button>
+          </a>
         </li>
         <li>
-          <button
-            onClick={() => {
-              props.onOpenArticle('contact')
-            }}
-          >
+          <a href='#contact'>
             Contact
-          </button>
+          </a>
         </li>
       </ul>
     </nav>
@@ -61,6 +45,7 @@ const Header = props => (
 Header.propTypes = {
   onOpenArticle: PropTypes.func,
   timeout: PropTypes.bool,
+  bandName: PropTypes.string
 }
 
 export default Header

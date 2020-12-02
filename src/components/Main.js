@@ -37,7 +37,7 @@ class Main extends React.Component {
             aliquam facilisis ante interdum congue. Integer mollis, nisl amet
             convallis, porttitor magna ullamcorper, amet egestas mauris. Ut
             magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas.
-            By the way, check out our <a onClick={() => {this.props.onNewArticle('events')}} href="#events">tour schedule</a>.
+            By the way, check out our <a href="#events">tour schedule</a>.
           </p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis

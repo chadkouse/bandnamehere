@@ -17,9 +17,26 @@ class IndexPage extends React.Component {
     }
     this.handleOpenArticle = this.handleOpenArticle.bind(this)
     this.handleCloseArticle = this.handleCloseArticle.bind(this)
+    this.handleClosingArticle = this.handleClosingArticle.bind(this)
     this.handleNewArticle = this.handleNewArticle.bind(this)
     this.setWrapperRef = this.setWrapperRef.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
+    this.handleHashChange = this.handleHashChange.bind(this);
+    this.bandNames = [
+        'Laser Flex',
+        'Take 2',
+        'Buzz Lustra',
+        'Vice Versa',
+        'Electric Cure',
+        'Electric Cool',
+        'Under Ice',
+        'Under Glass',
+        '30 Floors',
+        'Gem City',
+        'Donny\'s Van',
+        'Energize',
+        'Oh Snap'];
+      this.bandName = this.bandNames[Math.floor(Math.random() * this.bandNames.length)];
   }
 
   componentDidMount () {
@@ -27,6 +44,7 @@ class IndexPage extends React.Component {
         this.setState({loading: ''});
     }, 100);
     document.addEventListener('mousedown', this.handleClickOutside);
+    window.addEventListener('hashchange', this.handleHashChange);
   }
 
   componentWillUnmount () {
@@ -40,7 +58,15 @@ class IndexPage extends React.Component {
     this.wrapperRef = node;
   }
 
+  handleHashChange() {
+      const article = window.location.hash.replace('#', '')
+      console.log("Here", article);
+      // if (article === '') { return; }
+      this.handleNewArticle(article);
+  }
+
   handleOpenArticle(article) {
+      console.log("opening", article);
 
     this.setState({
       isArticleVisible: !this.state.isArticleVisible,
@@ -62,14 +88,25 @@ class IndexPage extends React.Component {
   }
 
   handleNewArticle(newArticle) {
-      this.handleCloseArticle();
-      setTimeout(() => {
-          this.handleOpenArticle(newArticle);
-      }, 400);
+      let timeout = 1;
+      console.log("here2", this.state.article, newArticle, this.state.isArticleVisible);
+      if (this.state.article !== newArticle && this.state.isArticleVisible) {
+          this.handleClosingArticle();
+          timeout = 400;
+      }
+      if (newArticle !== '') {
+          setTimeout(() => {
+              this.handleOpenArticle(newArticle);
+          }, timeout);
+      }
   }
 
   handleCloseArticle() {
+      console.log("CLOOOOOOOOOOOOOOOOOOOOOOOOOOSE");
+      window.location.hash = '';
+  }
 
+  handleClosingArticle() {
     this.setState({
       articleTimeout: !this.state.articleTimeout
     })
@@ -102,7 +139,7 @@ class IndexPage extends React.Component {
       <Layout location={this.props.location}>
         <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
           <div id="wrapper">
-            <Header onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} />
+            <Header onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} bandName={this.bandName} />
             <Main
               isArticleVisible={this.state.isArticleVisible}
               timeout={this.state.timeout}
