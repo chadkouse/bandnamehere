@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import Bandname from './Bandname'
 
 const Header = props => (
   <header id="header" style={props.timeout ? { display: 'none' } : {}}>
@@ -8,11 +9,11 @@ const Header = props => (
     </div>
     <div className="content">
       <div className="inner">
-        <h1>{ props.bandName }</h1>
-        <p>
+        <h1><Bandname /></h1>
+        <div className="blurb">
           <div>The area&apos;s best party band!</div>
           <div>Come party with we who party for a living!</div>
-        </p>
+        </div>
       </div>
     </div>
     <nav>

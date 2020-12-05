@@ -22,21 +22,6 @@ class IndexPage extends React.Component {
     this.setWrapperRef = this.setWrapperRef.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
     this.handleHashChange = this.handleHashChange.bind(this);
-    this.bandNames = [
-        'Laser Flex',
-        'Take 2',
-        'Buzz Lustra',
-        'Vice Versa',
-        'Electric Cure',
-        'Electric Cool',
-        'Under Ice',
-        'Under Glass',
-        '30 Floors',
-        'Gem City',
-        'Donny\'s Van',
-        'Energize',
-        'Oh Snap'];
-      this.bandName = this.bandNames[Math.floor(Math.random() * this.bandNames.length)];
   }
 
   componentDidMount () {
@@ -102,7 +87,6 @@ class IndexPage extends React.Component {
   }
 
   handleCloseArticle() {
-      console.log("CLOOOOOOOOOOOOOOOOOOOOOOOOOOSE");
       window.location.hash = '';
   }
 
@@ -139,7 +123,7 @@ class IndexPage extends React.Component {
       <Layout location={this.props.location}>
         <div className={`body ${this.state.loading} ${this.state.isArticleVisible ? 'is-article-visible' : ''}`}>
           <div id="wrapper">
-            <Header onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} bandName={this.bandName} />
+            <Header onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} />
             <Main
               isArticleVisible={this.state.isArticleVisible}
               timeout={this.state.timeout}

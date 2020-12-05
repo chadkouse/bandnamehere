@@ -3,15 +3,14 @@ import React from 'react'
 import pic01 from '../images/pic01.jpg'
 import pic02 from '../images/pic02.jpg'
 import pic03 from '../images/pic03.jpg'
+import { buttonize } from './Shared'
 
 class Main extends React.Component {
   render() {
     let close = (
       <div
         className="close"
-        onClick={() => {
-          this.props.onCloseArticle()
-        }}
+        {...buttonize(this.props.onCloseArticle)}
       ></div>
     )
 
