@@ -1,7 +1,6 @@
 module.exports = {
-  pathPrefix: '/band',
   siteMetadata: {
-    title: 'Band Name Here',
+    title: 'Party Punch Band',
     author: 'Chad Kouse',
     description: 'The Area\'s best party band! Come party with we who party for a living!',
   },
@@ -23,8 +22,7 @@ module.exports = {
     {
         resolve: `gatsby-plugin-s3`,
         options: {
-            bucketName: 'chadkouse.xyz',
-            bucketPrefix: 'band'
+            bucketName: 'partypunchband.com'
         },
     },
   ],
