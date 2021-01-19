@@ -5,7 +5,7 @@ import Bandname from './Bandname'
 const Header = props => (
   <header id="header" style={props.timeout ? { display: 'none' } : {}}>
     <div className="logo">
-      <span className="icon fa-diamond"></span>
+      <div class="icon"></div>
     </div>
     <div className="content">
       <div className="inner">

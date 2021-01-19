@@ -70,6 +70,15 @@
     border-radius: 100%;
 
     .icon {
+      background-image: url('../../images/punch-icon.png');
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      left: 0.5rem;
+      top: 0.7rem;
+      width: 4.5rem;
+      height: 4.5rem;
+
       &:before {
         font-size: 2rem;
       }
@@ -245,6 +254,10 @@
       line-height: 4.75rem;
 
       .icon {
+          left: 0.3rem;
+          top: 0.4rem;
+          width: 4rem;
+          height: 4rem;
         &:before {
           font-size: 1.75rem;
         }
