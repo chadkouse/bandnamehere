@@ -38,6 +38,11 @@ const Header = props => (
             Contact
           </a>
         </li>
+        <li>
+          <a href='#promo'>
+            Promo/Tech
+          </a>
+        </li>
       </ul>
     </nav>
   </header>

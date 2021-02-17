@@ -30,6 +30,8 @@ class IndexPage extends React.Component {
     }, 100);
     document.addEventListener('mousedown', this.handleClickOutside);
     window.addEventListener('hashchange', this.handleHashChange);
+    const article = window.location.hash.replace('#', '')
+    this.handleNewArticle(article);
   }
 
   componentWillUnmount () {
