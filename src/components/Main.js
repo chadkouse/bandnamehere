@@ -39,7 +39,7 @@ class Main extends React.Component {
 B-Harv and Jim Membership still rocking the mics.<br/>
 Magic Mike still slapping the bass.<br/>
 B-Shutts rocking guitar, keys, samples, and everything else.<br/>
-And introducing the inimitable Roy Donk kicking the beat on drums.<br/>
+And introducing Roy Donk - "King of the tuk tuk sound" - kicking the beat on drums.<br/>
 <br/>
 Grab a cup and fill it up with PARTY PUNCH.. but most of all SPREAD THE WORD - we can't wait to see you all real soon
           </p>
