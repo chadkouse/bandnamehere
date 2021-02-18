@@ -154,10 +154,17 @@
       li {
         padding-left: 0;
         border-left: solid _size(border-width) _palette(border);
-        min-width:100px;
+        min-width:9rem;
+        background-color: _palette(menu-bg);
+
 
         &:first-child {
           border-left: 0;
+        }
+
+        &:hover,
+        &:focus {
+            background-color: _palette(menu-bg-hover);
         }
 
         button,a {
