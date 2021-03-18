@@ -100,6 +100,7 @@ const EventDescription = ({ event }: { event: EventInfo }) => (
         </Text>
       )}
 
+      {event.eventLink && (
       <Box margin={{ top: 'medium' }}>
         <Button
           href={event.eventLink}
@@ -110,6 +111,7 @@ const EventDescription = ({ event }: { event: EventInfo }) => (
           primary
         />
       </Box>
+      )}
     </Box>
   </Box>
 );
