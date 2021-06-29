@@ -14,8 +14,8 @@
 
   "calendar": {
     "today": {
-      "background": "#9af1daCC",
-      "text": "#fff",
+      "background": "#FFFFFFaa",
+      "text": "#333",
       "border": "#fff"
     },
     "day": {
@@ -24,7 +24,7 @@
       "border": "#fff"
     },
     "past": {
-      "background": "#ffffff66",
+      "background": "#ffffffaa",
       "text": "#333",
       "border": "#fff"
     },
