@@ -25,7 +25,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     {
-      resolve: 'gatsby-source-google-sheets',
+      resolve: 'gatsby-source-google-spreadsheets',
       options: {
         spreadsheetId: SPREADSHEET_ID,
         worksheetTitle: 'Events',

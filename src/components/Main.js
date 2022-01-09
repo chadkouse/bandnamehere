@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import pic01 from '../images/pic01.jpg'
-import pic02 from '../images/pic02.jpg'
-import pic03 from '../images/pic03.jpg'
+import pic01 from '../images/pic01.png'
+import pic02 from '../images/pic02.png'
+import pic03 from '../images/pic03.png'
 import bandPic from '../images/party_punch_band_photo.png'
 import { buttonize } from './Shared'
 import { Calendar } from 'grommet-icons'
@@ -36,11 +36,6 @@ class Main extends React.Component {
           <p>
         Introducing the new Party Punch band!  Some familiar faces and some brand new but still partying for a living and still bringing the area's BEST dance party everywhere we go!<br/>
 <br/>
-B-Harv and Jim Membership still rocking the mics.<br/>
-Magic Mike still slapping the bass.<br/>
-B-Shutts rocking guitar, keys, samples, and everything else.<br/>
-And introducing Roy Donk - "King of the tuk tuk sound" - kicking the beat on drums.<br/>
-<br/>
 Grab a cup and fill it up with PARTY PUNCH.. but most of all SPREAD THE WORD - we can't wait to see you all real soon
           </p>
           <p>
@@ -64,7 +59,7 @@ Grab a cup and fill it up with PARTY PUNCH.. but most of all SPREAD THE WORD - w
         What makes a party go from good to GREAT?  A big bowl of PARTY PUNCH!
           </p>
           <p>If you're having a wedding, a special birthday party, a class reunion, or any other party or event -- PARTY PUNCH can help you take it from good to GREAT.  <a href="#contact">Contact Us</a> and we'll help you figure it all out.</p>
-          <h3 style={{ width:'100%', textAlign:'center' }}><a href="/tour-dates/"><Calendar color='#AA0000' /> CLICK HERE FOR OUR EVENTS CALENDAR! <Calendar color='#AA0000' /></a></h3>
+          <h3 style={{ width:'100%', textAlign:'center' }}><a href="/tour-dates/"><Calendar color='#ff43a5' /> CLICK HERE FOR OUR EVENTS CALENDAR! <Calendar color='#ff43a5' /></a></h3>
           {close}
         </article>
 
@@ -75,17 +70,21 @@ Grab a cup and fill it up with PARTY PUNCH.. but most of all SPREAD THE WORD - w
           }`}
           style={{ display: 'none' }}
         >
-          <h2 className="major">About</h2>
+          <h2 className="major">JPEGs and MP4s</h2>
           <span className="image main">
             <img src={pic03} alt="" />
           </span>
           <p>
-            PARTY PUNCH is:<br/>
-            B-Harv - Lead vocals<br/>
-            Jim Membership - Vocals, keys, guitar, samples<br/>
-            Magic Mike - Bass<br/>
-            B-Shutts - Vocals, keys, guitar, samples<br/>
-            Roy Donk - Drums<br/>
+            <a href='/images/party_punch_band_on_stage.jpg'><img src='/images/party_punch_band_on_stage.jpg' style={{width: '100%'}} alt="Party Punch On Stage" /></a>
+          </p>
+          <p>
+            <div class="resp-container" style={{width: '100%'}}>
+                <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fpartypunchband%2Fvideos%2F174023107928134%2F&show_text=false&width=560&t=0" class="resp-iframe" title="Party Punch Featured Video" style={{border:'none', overflow:'hidden'}} scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+            </div>
+          </p>
+          <p>
+        <ul class="icons"><li><a href="https://www.facebook.com/partypunchband" class="icon fa-facebook"><span class="label">Facebook</span></a></li><li><a href="https://instagram.com/partypunchband" class="icon fa-instagram"><span class="label">Instagram</span></a></li></ul>
+             Check us out on <a href='https://facebook.com/partypunchband'>The Facebook</a> or <a href='https://instagram.com/partypunchband'>Instagram</a> for more!
           </p>
           {close}
         </article>

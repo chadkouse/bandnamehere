@@ -30,7 +30,7 @@ const Header = props => (
         </li>
         <li>
           <a href='#about'>
-            About
+            Pics/Vids
           </a>
         </li>
         <li>
