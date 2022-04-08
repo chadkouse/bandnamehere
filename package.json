@@ -5,6 +5,7 @@
   "author": "Hunter Chang",
   "dependencies": {
     "babel-plugin-styled-components": "^1.12.0",
+    "colorette": "^2.0.16",
     "date-fns": "^2.16.1",
     "dotenv": "^8.0.0",
     "gatsby": "^2.19.5",
