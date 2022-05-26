@@ -43,6 +43,7 @@ const Layout = ({ children, location }) => {
             meta={[
               { name: 'description', content: 'Sample' },
               { name: 'keywords', content: 'sample, something' },
+              { name: 'facebook-domain-verification', content: '4zy7ndto5dchkv0ioo8uwplr90vhgj' }
             ]}
           >
             <html lang="en" />

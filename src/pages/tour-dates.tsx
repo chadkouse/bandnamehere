@@ -84,7 +84,7 @@ const SPREADSHEET_QUERY = graphql`
     allGoogleEventsSheet {
       nodes {
         id
-        eventName: nameOfTheEvent
+        eventName: eventName
         eventDesc: description
         date: date
         hour: time

@@ -79,6 +79,11 @@ Grab a cup and fill it up with PARTY PUNCH.. but most of all SPREAD THE WORD - w
           </p>
           <p>
             <div class="resp-container" style={{width: '100%'}}>
+                <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fpartypunchband%2Fvideos%2F504451034624826%2F&show_text=false&width=560&t=0" class="resp-iframe" title="Party Punch Practice Video" style={{border:'none', overflow:'hidden'}} scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+            </div>
+          </p>
+          <p>
+            <div class="resp-container" style={{width: '100%'}}>
                 <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fpartypunchband%2Fvideos%2F174023107928134%2F&show_text=false&width=560&t=0" class="resp-iframe" title="Party Punch Featured Video" style={{border:'none', overflow:'hidden'}} scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
             </div>
           </p>
