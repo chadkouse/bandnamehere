@@ -1,0 +1,248 @@
+@import "tailwindcss";
+
+/* Custom font face for StreetCred */
+@font-face {
+  font-family: 'StreetCred';
+  src: url('/fonts/street-cred.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Theme configuration using Tailwind CSS v4 @theme directive */
+@theme inline {
+  /* Colors from themes/main.json and SCSS vars */
+  --color-brand: #663399;
+  --color-secondary: #41a7b3;
+  --color-focus: #4b0558;
+
+  --color-bg: #1b1f22;
+  --color-bg-alt: #000000;
+  --color-bg-overlay: rgba(19, 21, 25, 0.75);
+
+  --color-fg: #ffffff;
+  --color-fg-light: rgba(255, 255, 255, 0.5);
+
+  --color-border: #ffffff;
+  --color-border-bg: rgba(255, 255, 255, 0.075);
+  --color-border-bg-alt: rgba(255, 255, 255, 0.175);
+
+  --color-menu-bg: rgba(0, 0, 0, 0.5);
+  --color-menu-bg-hover: rgba(0, 0, 0, 1);
+
+  /* Calendar colors - darkened with less bright borders */
+  --color-calendar-today-bg: rgba(255, 255, 255, 0.25);
+  --color-calendar-today-text: #fff;
+  --color-calendar-today-border: rgba(255, 255, 255, 0.4);
+
+  --color-calendar-day-bg: rgba(255, 255, 255, 0.15);
+  --color-calendar-day-text: #fff;
+  --color-calendar-day-border: rgba(255, 255, 255, 0.3);
+
+  --color-calendar-past-bg: rgba(255, 255, 255, 0.1);
+  --color-calendar-past-text: rgba(255, 255, 255, 0.6);
+  --color-calendar-past-border: rgba(255, 255, 255, 0.2);
+
+  --color-calendar-empty-bg: transparent;
+  --color-calendar-empty-border: rgba(255, 255, 255, 0.2);
+
+  --color-calendar-weekdays-bg: rgba(255, 255, 255, 0.1);
+  --color-calendar-weekdays-border: rgba(255, 255, 255, 0.3);
+  --color-calendar-weekdays-text: #fff;
+
+  --color-calendar-event-bg: rgba(170, 0, 12, 0.85);
+  --color-calendar-event-text: #fff;
+
+  --color-calendar-past-event-bg: rgba(102, 102, 102, 0.8);
+  --color-calendar-past-event-text: #fff;
+
+  --color-calendar-modal-text: #333;
+  --color-calendar-modal-separator: #666;
+  --color-calendar-modal-bg: #fff;
+
+  /* Font families */
+  --font-sans: 'Source Sans 3', sans-serif;
+  --font-mono: 'Courier New', monospace;
+  --font-streetcred: 'StreetCred', sans-serif;
+
+  /* Letter spacing */
+  --letter-spacing-normal: 0.2rem;
+  --letter-spacing-heading: 0.5rem;
+
+  /* Border radius */
+  --radius: 4px;
+
+  /* Spacing */
+  --spacing-element: 2.75rem;
+  --spacing-element-margin: 2rem;
+
+  /* Animation durations matching SCSS timings */
+  --duration-transition: 0.2s;
+  --duration-article: 0.325s;
+  --duration-article-long: 0.35s;
+  --duration-bg: 2.5s;
+  --duration-intro: 0.75s;
+
+  /* Breakpoints matching SCSS */
+  --breakpoint-xxsmall: 360px;
+  --breakpoint-xsmall: 480px;
+  --breakpoint-small: 736px;
+  --breakpoint-medium: 980px;
+  --breakpoint-large: 1280px;
+  --breakpoint-xlarge: 1680px;
+}
+
+/* Global styles */
+/* * { */
+/*   margin: 0; */
+/*   padding: 0; */
+/*   box-sizing: border-box; */
+/* } */
+/**/
+html {
+  color: var(--color-fg);
+  font-size: 16pt;
+}
+
+@media (max-width: 1680px) {
+  html {
+    font-size: 12pt;
+  }
+}
+
+@media (max-width: 736px) {
+  html {
+    font-size: 11pt;
+  }
+}
+
+@media (max-width: 360px) {
+  html {
+    font-size: 10pt;
+  }
+}
+
+body {
+  margin: 0;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  font-weight: 300;
+}
+
+/* Article modal animations matching SCSS timing */
+.article-enter {
+  opacity: 0;
+  transform: translateY(0.25rem);
+}
+
+.article-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--duration-article-long) ease-in-out,
+              transform var(--duration-article-long) ease-in-out;
+}
+
+.article-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.article-exit-active {
+  opacity: 0;
+  transform: translateY(0.25rem);
+  transition: opacity var(--duration-article) ease-in-out,
+              transform var(--duration-article) ease-in-out;
+}
+
+/* Loading state animations */
+.loading-enter {
+  opacity: 0;
+}
+
+.loading-enter-active {
+  opacity: 1;
+  transition: opacity 100ms;
+}
+
+/* Background blur effect */
+.blur-bg {
+  backdrop-filter: blur(4px);
+}
+
+/* Calendar day square sizing */
+.calendar-day-square {
+  height: 8rem;
+  width: calc(100% / 7);
+}
+
+/* Responsive iframe container (from SCSS) */
+.resp-container {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
+.resp-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Past event strikethrough */
+.line-through-past {
+  text-decoration: line-through;
+}
+
+/* Modal overlay helper */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: var(--color-bg-overlay);
+}
+
+/* Icon positioning */
+.icon-container {
+  position: relative;
+}
+
+/* Loading state animations - header reveal effect */
+.body.is-loading #header > * {
+  opacity: 0;
+}
+
+.body.is-loading #header .header-content-inner {
+  max-height: 0 !important;
+  padding: 0 !important;
+  opacity: 0;
+}
+
+/* Article visible state */
+.body.is-article-visible #header {
+  transform: scale(0.95);
+  opacity: 0;
+  transition: transform var(--duration-article) ease-in-out,
+              opacity var(--duration-article) ease-in-out;
+}
+
+.body.is-article-visible #footer {
+  opacity: 0;
+  transition: opacity var(--duration-article) ease-in-out;
+}
+
+/* Utility classes */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
