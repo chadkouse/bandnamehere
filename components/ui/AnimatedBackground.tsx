@@ -53,7 +53,7 @@ export default function AnimatedBackground({
     <motion.div
       id="bg"
       style={{
-        position: 'absolute',
+        position: 'fixed',
         top: 0,
         left: 0,
         width: '100vw',
@@ -66,11 +66,12 @@ export default function AnimatedBackground({
     >
       {/* Overlay layer */}
       <motion.div
-          className="h-[110vh] md:h-screen"
+          className="h-screen"
         style={{
           position: 'absolute',
           top: 0,
           left: 0,
+          bottom: 0,
           width: '100vw',
           backgroundImage:
             'linear-gradient(to top, rgba(19,21,25,0.75), rgba(19,21,25,0.75)), url(/images/overlay.png)',
