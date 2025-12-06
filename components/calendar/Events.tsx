@@ -38,7 +38,7 @@ export default function Events({ events, hasPast }: Props) {
         <div key={event.id}>
           <div
             className={`rounded-sm px-1 py-1 transition-all duration-200 hover:brightness-110 hover:scale-[1.02] cursor-pointer ${
-              hasPast ? 'bg-gray-600/80' : 'bg-red-700/85'
+              hasPast ? 'bg-gray-600/80' : 'bg-pink-700/95 hover:bg-sky-500/85 transition duration-300 ease-in-out'
             }`}
           >
             <p

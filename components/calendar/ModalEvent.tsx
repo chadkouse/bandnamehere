@@ -35,18 +35,18 @@ export default function ModalEvent({ onClose, date, events }: Props) {
           exit={{ scale: 0.9, opacity: 0 }}
           transition={{ duration: 0.2 }}
           onClick={(e) => e.stopPropagation()}
-          className="rounded-lg shadow-2xl max-w-lg w-full mx-4 overflow-hidden bg-white"
+          className="rounded-lg shadow-2xl/20 ring ring-sky-500/20 max-w-lg w-full mx-4 overflow-hidden bg-[rgba(27,31,34,0.95)] shadow-sky-500"
         >
           {/* Header */}
           <div className="flex justify-between items-center px-4 py-3 border-b">
             <h3
-              className="font-bold text-lg text-[#333]"
+              className="font-bold text-lg"
             >
               {format(date, 'cccc d, MMMM')}
             </h3>
             <button
               onClick={onClose}
-              className="rounded-full p-1 hover:bg-gray-200 text-[#333]"
+              className="rounded-full p-1 hover:bg-gray-600 cursor-pointer"
               aria-label="Close popup"
             >
               <X size={24} />
@@ -84,21 +84,21 @@ function EventDescription({
       <div className="flex flex-col w-full">
         {event.hour && (
           <p
-            className="text-md mb-2 text-[#333]"
+            className="text-md mb-2"
           >
             {parseTime(event.hour)}
           </p>
         )}
 
         <h4
-          className="font-bold text-xl mb-2 text-[#333]"
+          className="font-bold text-xl mb-2"
         >
           {event.eventName}
         </h4>
 
         {event.eventDesc && (
           <p
-            className="whitespace-pre-wrap my-4 text-[#333]"
+            className="whitespace-pre-wrap my-4"
           >
             {event.eventDesc}
           </p>
@@ -109,7 +109,7 @@ function EventDescription({
             href={`https://maps.google.com/?q=${encodeURIComponent(event.place)}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center hover:underline mb-2 text-[#333]"
+            className="flex items-center hover:underline mb-2 "
           >
             <MapPin size={16} className="mr-1" />
             {event.place}
@@ -118,7 +118,7 @@ function EventDescription({
 
         {event.price && (
           <p
-            className="whitespace-pre-wrap my-4 text-[#333]"
+            className="whitespace-pre-wrap my-4"
           >
             {event.price}
           </p>
@@ -129,8 +129,8 @@ function EventDescription({
             href={event.eventLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 px-4 py-2 rounded transition-colors self-end text-white bg-[#663399] hover:bg-[#4b0558]"
-          >
+            className="mt-4 px-4 py-2 rounded transition-colors font-bold self-end text-white bg-pink-700/95 hover:bg-sky-500/85 transition duration-300 ease-in-out hover:text-white!"
+            >
             Event Link
           </a>
         )}
