@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "predeploy": "npm run build && cp CNAME out/",
-    "deploy": "gh-pages --nojekyll -- -d out"
+    "publish": "gh-pages --nojekyll --cname partypunchband.com -d out",
+    "predeploy": "npm run build",
+    "deploy": "npm run publish"
   },
   "dependencies": {
     "clsx": "^2.1.1",
