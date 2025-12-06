@@ -48,19 +48,30 @@ export default function AnimatedBackground({
 
     return () => observer.disconnect();
   }, []);
+
   return (
     <motion.div
       id="bg"
-      className="fixed top-0 left-0 w-full h-screen"
-      style={{ zIndex: 1 }}
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100vw',
+        height: '100vh',
+        zIndex: 1,
+      }}
       initial={{ scale: 1 }}
       animate={{ scale: isArticleVisible ? 1.0825 : 1 }}
       transition={{ duration: 0.325 }}
     >
       {/* Overlay layer */}
       <motion.div
-        className="absolute top-0 left-0 w-full h-full"
+          className="h-[110vh] md:h-screen"
         style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100vw',
           backgroundImage:
             'linear-gradient(to top, rgba(19,21,25,0.75), rgba(19,21,25,0.75)), url(/images/overlay.png)',
           backgroundSize: 'auto, 256px 256px',
@@ -76,18 +87,22 @@ export default function AnimatedBackground({
       {/* Background image layer */}
       {backgroundImage && (
         <motion.div
-          className="absolute top-0 left-0 w-full h-full"
+          className="h-[110vh] md:h-screen"
           style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100vw',
             backgroundImage: `url(${backgroundImage})`,
             backgroundPosition: 'center',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
-            transform: 'scale(1.125)',
+            // transform: 'scale(1.125)',
             zIndex: 1,
           }}
-          animate={{
-            transform: isArticleVisible ? 'scale(1.0825)' : 'scale(1.125)',
-          }}
+          // animate={{
+          //   transform: isArticleVisible ? 'scale(1.0825)' : 'scale(1)',
+          // }}
           transition={{ duration: 0.325 }}
         />
       )}

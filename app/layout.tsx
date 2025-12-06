@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 import { appConfig } from '@/config/app';
 import './globals.css';
@@ -21,6 +21,13 @@ export const metadata: Metadata = {
     'facebook-domain-verification': '4zy7ndto5dchkv0ioo8uwplr90vhgj',
   },
 };
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#000000',
+}
 
 export default function RootLayout({
   children,
