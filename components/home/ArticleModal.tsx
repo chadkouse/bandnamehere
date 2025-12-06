@@ -46,7 +46,7 @@ export function ArticleModal({ title, children, onClose }: ArticleModalProps) {
           aria-label="Close article"
         >
           <span className="sr-only">Close</span>
-          <div className="absolute top-3 left-3 w-10 h-10 rounded-full bg-center bg-no-repeat hover:bg-[var(--color-border-bg)] active:bg-[var(--color-border-bg-alt)] transition-colors flex items-center justify-center">
+          <div className="absolute top-3 left-3 w-10 h-10 rounded-full bg-center bg-no-repeat hover:bg-white/7.5 active:bg-white/17.5 transition-colors flex items-center justify-center">
             <svg
               className="w-5 h-5"
               viewBox="0 0 20 20"

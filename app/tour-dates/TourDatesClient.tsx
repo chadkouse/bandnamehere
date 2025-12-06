@@ -100,7 +100,7 @@ export default function TourDatesClient({ initialEvents }: TourDatesClientProps)
         <div className="p-4 md:p-8">
         <Link
           href="/"
-          className="flex items-center gap-2 text-white transition-colors mb-4 w-fit hover:text-[var(--color-secondary)]"
+          className="flex items-center gap-2 text-white transition-colors mb-4 w-fit hover:text-[#41a7b3]"
         >
           <ArrowLeft size={20} />
           Back home
@@ -111,7 +111,6 @@ export default function TourDatesClient({ initialEvents }: TourDatesClientProps)
             We&apos;d love to bring the party to YOU!{' '}
             <Link
               href="/contact"
-              className="border-b border-dotted no-underline border-white/50 text-white"
             >
               Contact us
             </Link>{' '}

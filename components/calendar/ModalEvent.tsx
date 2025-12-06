@@ -27,8 +27,7 @@ export default function ModalEvent({ onClose, date, events }: Props) {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="fixed inset-0 z-50 flex items-center justify-center"
-        style={{ backgroundColor: 'var(--color-bg-overlay)' }}
+        className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(19,21,25,0.75)]"
       >
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
@@ -36,21 +35,18 @@ export default function ModalEvent({ onClose, date, events }: Props) {
           exit={{ scale: 0.9, opacity: 0 }}
           transition={{ duration: 0.2 }}
           onClick={(e) => e.stopPropagation()}
-          className="rounded-lg shadow-2xl max-w-lg w-full mx-4 overflow-hidden"
-          style={{ backgroundColor: 'var(--color-calendar-modal-bg)' }}
+          className="rounded-lg shadow-2xl max-w-lg w-full mx-4 overflow-hidden bg-white"
         >
           {/* Header */}
           <div className="flex justify-between items-center px-4 py-3 border-b">
             <h3
-              className="font-bold text-lg"
-              style={{ color: 'var(--color-calendar-modal-text)' }}
+              className="font-bold text-lg text-[#333]"
             >
               {format(date, 'cccc d, MMMM')}
             </h3>
             <button
               onClick={onClose}
-              className="rounded-full p-1 hover:bg-gray-200"
-              style={{ color: 'var(--color-calendar-modal-text)' }}
+              className="rounded-full p-1 hover:bg-gray-200 text-[#333]"
               aria-label="Close popup"
             >
               <X size={24} />
@@ -64,8 +60,7 @@ export default function ModalEvent({ onClose, date, events }: Props) {
                 <EventDescription event={event} parseTime={parseTime} />
                 {i !== arr.length - 1 && (
                   <div
-                    className="my-4 h-[3px] rounded-full"
-                    style={{ backgroundColor: 'var(--color-calendar-modal-separator)' }}
+                    className="my-4 h-[3px] rounded-full bg-[#666]"
                   />
                 )}
               </Fragment>
@@ -89,24 +84,21 @@ function EventDescription({
       <div className="flex flex-col w-full">
         {event.hour && (
           <p
-            className="text-md mb-2"
-            style={{ color: 'var(--color-calendar-modal-text)' }}
+            className="text-md mb-2 text-[#333]"
           >
             {parseTime(event.hour)}
           </p>
         )}
 
         <h4
-          className="font-bold text-xl mb-2"
-          style={{ color: 'var(--color-calendar-modal-text)' }}
+          className="font-bold text-xl mb-2 text-[#333]"
         >
           {event.eventName}
         </h4>
 
         {event.eventDesc && (
           <p
-            className="whitespace-pre-wrap my-4"
-            style={{ color: 'var(--color-calendar-modal-text)' }}
+            className="whitespace-pre-wrap my-4 text-[#333]"
           >
             {event.eventDesc}
           </p>
@@ -117,8 +109,7 @@ function EventDescription({
             href={`https://maps.google.com/?q=${encodeURIComponent(event.place)}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center hover:underline mb-2"
-            style={{ color: 'var(--color-calendar-modal-text)' }}
+            className="flex items-center hover:underline mb-2 text-[#333]"
           >
             <MapPin size={16} className="mr-1" />
             {event.place}
@@ -127,8 +118,7 @@ function EventDescription({
 
         {event.price && (
           <p
-            className="whitespace-pre-wrap my-4"
-            style={{ color: 'var(--color-calendar-modal-text)' }}
+            className="whitespace-pre-wrap my-4 text-[#333]"
           >
             {event.price}
           </p>
@@ -139,14 +129,7 @@ function EventDescription({
             href={event.eventLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 px-4 py-2 rounded transition-colors self-end text-white"
-            style={{ backgroundColor: 'var(--color-brand)' }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = 'var(--color-focus)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'var(--color-brand)';
-            }}
+            className="mt-4 px-4 py-2 rounded transition-colors self-end text-white bg-[#663399] hover:bg-[#4b0558]"
           >
             Event Link
           </a>
