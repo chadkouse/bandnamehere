@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useCallback, useEffect } from 'react';
+import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import { format } from 'date-fns';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
@@ -26,6 +26,7 @@ export default function TourDatesClient({ initialEvents }: TourDatesClientProps)
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState<ModalData>();
   const [backgroundImage, setBackgroundImage] = useState('');
+  const modalOpenedRef = useRef(false);
 
   useEffect(() => {
     // Randomly select a background image on mount
@@ -38,9 +39,36 @@ export default function TourDatesClient({ initialEvents }: TourDatesClientProps)
     [initialEvents]
   );
 
+  // Handle browser back button
+  useEffect(() => {
+    const handlePopState = () => {
+      if (showModal) {
+        setShowModal(false);
+        modalOpenedRef.current = false;
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [showModal]);
+
   const openModal = useCallback((data: ModalData) => {
     setModalData(data);
     setShowModal(true);
+    // Push a new history entry when opening modal
+    if (!modalOpenedRef.current) {
+      window.history.pushState({ modal: 'event' }, '');
+      modalOpenedRef.current = true;
+    }
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setShowModal(false);
+    // Go back in history if we pushed a state
+    if (modalOpenedRef.current) {
+      window.history.back();
+      modalOpenedRef.current = false;
+    }
   }, []);
 
   const [loading, setLoading] = useState('is-loading');
@@ -129,7 +157,7 @@ export default function TourDatesClient({ initialEvents }: TourDatesClientProps)
         </div>
 
         {showModal && modalData && (
-          <ModalEvent onClose={() => setShowModal(false)} {...modalData} />
+          <ModalEvent onClose={closeModal} {...modalData} />
         )}
         </div>
       </div>

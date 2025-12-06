@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Header from '@/components/home/Header';
 import Footer from '@/components/home/Footer';
 import AnimatedBackground from '@/components/ui/AnimatedBackground';
@@ -18,6 +18,7 @@ type ModalType = 'intro' | 'events' | 'about' | 'contact' | 'promo' | null;
 export default function HomePage() {
   const [loading, setLoading] = useState('is-loading');
   const [activeModal, setActiveModal] = useState<ModalType>(null);
+  const modalOpenedRef = useRef(false);
 
   // Loading state removal
   useEffect(() => {
@@ -27,12 +28,35 @@ export default function HomePage() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Handle browser back button
+  useEffect(() => {
+    const handlePopState = () => {
+      if (activeModal) {
+        setActiveModal(null);
+        modalOpenedRef.current = false;
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [activeModal]);
+
   const openModal = (modal: ModalType) => {
     setActiveModal(modal);
+    // Push a new history entry when opening modal
+    if (!modalOpenedRef.current) {
+      window.history.pushState({ modal }, '');
+      modalOpenedRef.current = true;
+    }
   };
 
   const closeModal = () => {
     setActiveModal(null);
+    // Go back in history if we pushed a state
+    if (modalOpenedRef.current) {
+      window.history.back();
+      modalOpenedRef.current = false;
+    }
   };
 
   const modalConfig = {
