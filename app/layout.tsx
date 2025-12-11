@@ -15,8 +15,13 @@ export const metadata: Metadata = {
   title: appConfig.title,
   description: appConfig.subTitle,
   icons: {
-    icon: '/images/punch-icon.png',
+    icon: [
+      { url: '/icon0.svg', type: 'image/svg+xml' },
+      { url: '/icon1.png', type: 'image/png' },
+    ],
+    apple: '/apple-icon.png',
   },
+  manifest: '/manifest.json',
   other: {
     'facebook-domain-verification': '4zy7ndto5dchkv0ioo8uwplr90vhgj',
   },
