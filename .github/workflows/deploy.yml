@@ -40,6 +40,17 @@ jobs:
           EOF
 
       - name: Deploy
-        run: npm run deploy
-        env:
+        run: npm run build
+
+      - name: Add .nojekyll file
+        run: touch out/.nojekyll # Tells GitHub Pages to bypass Jekyll
+
+      - name: Add CNAME file
+        run: echo "partypunchband.com" > out/CNAME # Replace with your domain
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch to deploy the content to
+          FOLDER: out # The folder containing your built site files
