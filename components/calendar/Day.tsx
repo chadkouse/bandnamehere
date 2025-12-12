@@ -23,7 +23,9 @@ export default function Day({ date, events, onClick }: Props) {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  const today = new Date();
+  const today = new Date(
+    new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })
+  );
   const isToday = isSameDay(date, today);
   const hasPast = isBefore(date, today) && !isToday;
   const dayType = (isToday && 'today') || (hasPast && 'past') || 'day';
