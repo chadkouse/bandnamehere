@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import { format } from 'date-fns';
+import { toZonedTime } from 'date-fns-tz';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import Month from '@/components/calendar/Month';
@@ -11,6 +12,8 @@ import { ModalData, EventInfo } from '@/types';
 import { appConfig } from '@/config/app';
 import Bandname from '@/components/home/Bandname';
 import AnimatedBackground from '@/components/ui/AnimatedBackground';
+
+const TIMEZONE = 'America/New_York';
 
 const backgroundImages = [
   '/images/home-0.jpg',
@@ -26,6 +29,7 @@ export default function TourDatesClient({ initialEvents }: TourDatesClientProps)
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState<ModalData>();
   const [backgroundImage, setBackgroundImage] = useState('');
+  const [currentDate, setCurrentDate] = useState(new Date());
   const modalOpenedRef = useRef(false);
 
   useEffect(() => {
@@ -34,9 +38,40 @@ export default function TourDatesClient({ initialEvents }: TourDatesClientProps)
     setBackgroundImage(backgroundImages[randomIndex]);
   }, []);
 
+  // Update current date on mount and daily (using EST)
+  useEffect(() => {
+    const getESTDate = () => toZonedTime(new Date(), TIMEZONE);
+
+    // Set the current date on mount (EST)
+    setCurrentDate(getESTDate());
+
+    // Calculate time until EST midnight
+    const now = new Date();
+    const estNow = toZonedTime(now, TIMEZONE);
+    const estTomorrow = new Date(estNow);
+    estTomorrow.setDate(estTomorrow.getDate() + 1);
+    estTomorrow.setHours(0, 0, 0, 0);
+
+    // Convert EST midnight back to local time to get correct timeout
+    const msUntilMidnight = estTomorrow.getTime() - estNow.getTime();
+
+    const midnightTimeout = setTimeout(() => {
+      setCurrentDate(getESTDate());
+
+      // Set up daily interval after first midnight
+      const dailyInterval = setInterval(() => {
+        setCurrentDate(getESTDate());
+      }, 24 * 60 * 60 * 1000);
+
+      return () => clearInterval(dailyInterval);
+    }, msUntilMidnight);
+
+    return () => clearTimeout(midnightTimeout);
+  }, []);
+
   const months = useMemo(
-    () => groupEventsByMonth(initialEvents, appConfig.limitMonthInTheFuture),
-    [initialEvents]
+    () => groupEventsByMonth(initialEvents, appConfig.limitMonthInTheFuture, currentDate),
+    [initialEvents, currentDate]
   );
 
   // Handle browser back button

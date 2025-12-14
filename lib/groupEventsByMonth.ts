@@ -26,8 +26,9 @@ const removeOldAndFutureEvents = (
 const groupEventsByMonth = (
   events: EventInfo[],
   monthsDifferenceThreshold: number,
+  currentDate?: Date,
 ): MonthInfo[] => {
-  const today = new Date();
+  const today = currentDate || new Date();
 
   const eventsByMonthKey = events
     .filter((event) =>
