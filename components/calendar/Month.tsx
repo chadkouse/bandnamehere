@@ -8,9 +8,10 @@ import { MonthInfo, ModalData } from '@/types';
 
 type Props = MonthInfo & {
   openModal: (modalData: ModalData) => void;
+  currentDate: Date;
 };
 
-export default function Month({ events, startDate, openModal }: Props) {
+export default function Month({ events, startDate, openModal, currentDate }: Props) {
   const dayNumber = getISODay(startDate);
   const days = getDaysInMonth(startDate);
   const emptyDays = 7 - ((dayNumber + days) % 7);
@@ -51,6 +52,7 @@ export default function Month({ events, startDate, openModal }: Props) {
               <Day
                 key={format(modalData.date, 'dd')}
                 onClick={onClick}
+                currentDate={currentDate}
                 {...modalData}
               />
             );

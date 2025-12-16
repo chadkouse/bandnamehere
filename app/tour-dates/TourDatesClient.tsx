@@ -186,6 +186,7 @@ export default function TourDatesClient({ initialEvents }: TourDatesClientProps)
           <Month
             key={format(month.startDate, 'MM-yyyy')}
             openModal={openModal}
+            currentDate={currentDate}
             {...month}
           />
         ))}

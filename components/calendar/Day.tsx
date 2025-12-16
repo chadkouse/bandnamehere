@@ -8,9 +8,10 @@ import { ModalData } from '@/types';
 
 type Props = ModalData & {
   onClick?: () => void;
+  currentDate: Date;
 };
 
-export default function Day({ date, events, onClick }: Props) {
+export default function Day({ date, events, onClick, currentDate }: Props) {
   const [isPhone, setIsPhone] = React.useState(false);
 
   React.useEffect(() => {
@@ -23,11 +24,8 @@ export default function Day({ date, events, onClick }: Props) {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  const today = new Date(
-    new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })
-  );
-  const isToday = isSameDay(date, today);
-  const hasPast = isBefore(date, today) && !isToday;
+  const isToday = isSameDay(date, currentDate);
+  const hasPast = isBefore(date, currentDate) && !isToday;
   const dayType = (isToday && 'today') || (hasPast && 'past') || 'day';
 
   // On phone: hide past days without events, and empty future days
