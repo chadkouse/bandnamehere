@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { isBefore, isSameDay, format } from 'date-fns';
+import { isBefore, isSameDay, format, startOfDay } from 'date-fns';
 import Events from './Events';
 import CalendarBox from './CalendarBox';
 import { ModalData } from '@/types';
@@ -24,8 +24,12 @@ export default function Day({ date, events, onClick, currentDate }: Props) {
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  const isToday = isSameDay(date, currentDate);
-  const hasPast = isBefore(date, currentDate) && !isToday;
+  // Normalize both dates to start of day for accurate comparison
+  const normalizedDate = startOfDay(date);
+  const normalizedCurrentDate = startOfDay(currentDate);
+
+  const isToday = isSameDay(normalizedDate, normalizedCurrentDate);
+  const hasPast = isBefore(normalizedDate, normalizedCurrentDate) && !isToday;
   const dayType = (isToday && 'today') || (hasPast && 'past') || 'day';
 
   // On phone: hide past days without events, and empty future days

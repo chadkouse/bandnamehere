@@ -2,7 +2,6 @@
 
 import { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import { format } from 'date-fns';
-import { toZonedTime } from 'date-fns-tz';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import Month from '@/components/calendar/Month';
@@ -40,20 +39,42 @@ export default function TourDatesClient({ initialEvents }: TourDatesClientProps)
 
   // Update current date on mount and daily (using EST)
   useEffect(() => {
-    const getESTDate = () => toZonedTime(new Date(), TIMEZONE);
+    const getESTDate = () => {
+      // Get current date in EST timezone
+      const now = new Date();
+      const estString = now.toLocaleString('en-US', {
+        timeZone: TIMEZONE,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      });
+      const [month, day, year] = estString.split('/');
+      // Create date at midnight EST
+      return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+    };
+
+    const getESTMidnight = () => {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const tomorrowString = tomorrow.toLocaleString('en-US', {
+        timeZone: TIMEZONE,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      });
+      const [month, day, year] = tomorrowString.split('/');
+      const estMidnight = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+
+      // Get current EST time to calculate time until midnight
+      const nowEST = new Date(new Date().toLocaleString('en-US', { timeZone: TIMEZONE }));
+      return estMidnight.getTime() - nowEST.getTime();
+    };
 
     // Set the current date on mount (EST)
     setCurrentDate(getESTDate());
 
     // Calculate time until EST midnight
-    const now = new Date();
-    const estNow = toZonedTime(now, TIMEZONE);
-    const estTomorrow = new Date(estNow);
-    estTomorrow.setDate(estTomorrow.getDate() + 1);
-    estTomorrow.setHours(0, 0, 0, 0);
-
-    // Convert EST midnight back to local time to get correct timeout
-    const msUntilMidnight = estTomorrow.getTime() - estNow.getTime();
+    const msUntilMidnight = getESTMidnight();
 
     const midnightTimeout = setTimeout(() => {
       setCurrentDate(getESTDate());
